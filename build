@@ -6,5 +6,5 @@ declare version
 commit="$(git rev-parse --verify HEAD)"
 version="1.0.0-${commit:0:8}"
 
-docker build -t "stena/aws-es-kibana:${version:?}" .
-docker tag "stena/aws-es-kibana:${version:?}" stena/aws-es-kibana:latest
+docker build -t "stena/cloudops-aws-es-kibana:${version:?}" .
+docker tag "stena/cloudops-aws-es-kibana:${version:?}" stena/cloudops-aws-es-kibana:latest

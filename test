@@ -29,5 +29,5 @@ docker run --rm \
   -e USER="${BASIC_AUTH_USER:?}" \
   -e PASSWORD="${BASIC_AUTH_PASSWORD:?}" \
   -p 9200:9200 \
-  stena/aws-es-kibana:latest \
+  stena/cloudops-aws-es-kibana:latest \
   "${ENDPOINT:?}"

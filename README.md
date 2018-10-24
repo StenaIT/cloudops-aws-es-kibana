@@ -1,4 +1,4 @@
-# aws-es-kibana
+# cloudops-aws-es-kibana
 
 An alpine base docker image running the [aws-es-kibana](https://github.com/santthosh/aws-es-kibana) proxy service.
 
@@ -11,6 +11,6 @@ docker run --rm \
   -e USER=kibana \
   -e PASSWORD=adminparty \
   -p 9200:9200 \
-  stena/aws-es-kibana:latest \
+  stena/cloudops-aws-es-kibana:latest \
   <ELASTICSEARCH_SERVICE_DOMAIN_ENDPOINT>
 ```
