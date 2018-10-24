@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+export ENDPOINT
+export ACCESS_KEY_ID
+export SECRET_ACCESS_KEY
+export BASIC_AUTH_USER
+export BASIC_AUTH_PASSWORD
+
+ENDPOINT=''
+ACCESS_KEY_ID=''
+SECRET_ACCESS_KEY=''
+BASIC_AUTH_USER='kibana'
+BASIC_AUTH_PASSWORD='kibana'
+
+declare name="${1:?'A name must be given (used for .env files)'}"
+declare dotenv_file="./.env.${name:?}"
+if [[ -f ${dotenv_file:?} ]]; then
+  echo "Sourcing ${dotenv_file:?} file"
+  # shellcheck source=/dev/null
+  source "${dotenv_file:?}"
+else
+  echo "No .env file found! (${dotenv_file:?})"
+  exit 1
+fi
+
+docker run --rm \
+  -e AWS_ACCESS_KEY_ID="${ACCESS_KEY_ID:?}" \
+  -e AWS_SECRET_ACCESS_KEY="${SECRET_ACCESS_KEY:?}" \
+  -e USER="${BASIC_AUTH_USER:?}" \
+  -e PASSWORD="${BASIC_AUTH_PASSWORD:?}" \
+  -p 9200:9200 \
+  stena/aws-es-kibana:latest \
+  "${ENDPOINT:?}"
